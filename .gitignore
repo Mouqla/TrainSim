@@ -1,0 +1,36 @@
+# Compiled Java output
+/bin/
+*.class
+
+# Local environment configuration
+.env
+.env.*
+!.env.example
+
+# IDE and editor files
+/.idea/
+/.vscode/
+/.settings/
+*.iml
+.classpath
+.project
+*.swp
+*~
+
+# Operating-system files
+.DS_Store
+Thumbs.db
+
+# Logs and temporary build output
+*.log
+*.tmp
+/build/
+/out/
+
+# Local scratch copies that are not part of the solution
+/lab1test.java
+/src/*.sensor-backup
+/Lab1-documentation.txt
+
+# Local development container; not needed to build the school project.
+/.devcontainer/
