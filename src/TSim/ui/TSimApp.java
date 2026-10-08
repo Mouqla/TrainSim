@@ -75,7 +75,7 @@ public final class TSimApp {
 
     private static void start(AppOptions options) {
         SimulationState state = loadState(options);
-        RailPanel panel = openWindow(state, options.mapPath());
+        RailPanel panel = openWindow(state, options.mapPath(), true);
         EmbeddedTSim simulator = new EmbeddedTSim(state, panel::repaint, new EmbeddedTSim.Listener() {
             @Override
             public void sensorEvent(int trainNo, int x, int y, boolean active) {
@@ -93,24 +93,26 @@ public final class TSimApp {
 
     public static void startStandalone(Path mapPath, int timerDelayMs) {
         SwingUtilities.invokeLater(() -> {
-            RailPanel panel = openWindow(loadState(new AppOptions(timerDelayMs, mapPath)), mapPath);
+            RailPanel panel = openWindow(loadState(new AppOptions(timerDelayMs, mapPath)), mapPath, true);
             new EmbeddedTSim(panel.state, panel::repaint, new EmbeddedTSim.Listener() {
             }).startTimer(timerDelayMs);
         });
     }
 
     public static EmbeddedTSim startEmbedded(Path mapPath, int timerDelayMs, EmbeddedTSim.Listener listener) {
-        RailPanel panel = openWindow(loadState(new AppOptions(timerDelayMs, mapPath)), mapPath);
+        RailPanel panel = openWindow(loadState(new AppOptions(timerDelayMs, mapPath)), mapPath, false);
         EmbeddedTSim simulator = new EmbeddedTSim(panel.state, panel::repaint, listener);
         simulator.startTimer(timerDelayMs);
         return simulator;
     }
 
-    private static RailPanel openWindow(SimulationState state, Path mapPath) {
-        JFrame frame = new JFrame("Java TSim");
+    private static RailPanel openWindow(SimulationState state, Path mapPath, boolean showControls) {
+        JFrame frame = new JFrame("TrainSim");
         RailPanel panel = new RailPanel(state, mapPath != null ? mapPath : DEFAULT_SAVE);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.add(toolbar(panel), BorderLayout.NORTH);
+        if (showControls) {
+            frame.add(toolbar(panel), BorderLayout.NORTH);
+        }
         frame.add(panel, BorderLayout.CENTER);
         frame.pack();
         frame.setLocationByPlatform(true);

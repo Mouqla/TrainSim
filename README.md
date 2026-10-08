@@ -41,6 +41,14 @@ java Run.java
 
 That single command compiles the project and opens the graphical train simulator. The default train speeds are 5 and 10. The simulator is included in the repository, so no separate TSim installation is needed.
 
+To select the speed of each train, add two whole numbers from 0 to 17. This example starts train 1 at speed 17 and train 2 at speed 10:
+
+```bash
+java Run.java 17 10
+```
+
+The simulator window only shows the railway during a normal project run. Editing controls that could manually change train speeds or switches are hidden.
+
 On Windows, open the project folder in File Explorer, type `cmd` in the address bar, press Enter and then enter `java Run.java`.
 
 If the command reports that Java is missing, install JDK 17 or newer, restart the terminal and try again.
