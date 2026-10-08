@@ -11,7 +11,7 @@ all:
 	cp -R src/TSim/ui/bitmaps bin/tsim/ui/
 
 run: all
-	$(JAVA) -cp bin JavaMain
+	$(JAVA) Run.java
 
 test: all
 	$(JAVAC) -cp bin -d bin tests/HeadlessLab1Runner.java

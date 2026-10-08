@@ -11,7 +11,7 @@ public class Main {
     private static final String DEFAULT_MAP = "Lab1.map";
     private static final int DEFAULT_TRAIN_1_SPEED = 5;
     private static final int DEFAULT_TRAIN_2_SPEED = 10;
-    private static final int DEFAULT_JAVA_TSIM_SPEED = 1;
+    private static final int DEFAULT_JAVA_TSIM_SPEED = 20;
 
     /**
      * The main method expects 3-4 arguments, e.g.:

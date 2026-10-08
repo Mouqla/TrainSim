@@ -33,21 +33,17 @@ At a station, a train stops for `1000 + 20 × |speed|` milliseconds and then rev
 
 You only need [Java JDK 17 or newer](https://adoptium.net/) to run the project. Download or clone the repository, extract it if needed, and open the project folder.
 
-### Windows
-
-Double-click `run.bat`.
-
-### Linux, macOS or WSL
-
-Open a terminal in the project folder and run:
+Open a terminal in the downloaded project folder and run:
 
 ```bash
-./run.sh
+java Run.java
 ```
 
-The start script compiles the project and opens the graphical train simulator. The default train speeds are 5 and 10. The simulator is included in the repository, so no separate TSim installation is needed.
+That single command compiles the project and opens the graphical train simulator. The default train speeds are 5 and 10. The simulator is included in the repository, so no separate TSim installation is needed.
 
-If the script reports that Java is missing, install JDK 17 or newer, restart the terminal and try again.
+On Windows, open the project folder in File Explorer, type `cmd` in the address bar, press Enter and then enter `java Run.java`.
+
+If the command reports that Java is missing, install JDK 17 or newer, restart the terminal and try again.
 
 ## Test without opening the simulator
 
@@ -67,6 +63,5 @@ src/Main.java                 Application entry points
 src/TSim/                     Bundled Java simulator and API
 tests/HeadlessLab1Runner.java Headless integration runner
 Lab1.map                      Railway map and sensor positions
-run.bat                       Start the project on Windows
-run.sh                        Start the project on Linux, macOS or WSL
+Run.java                      Simple cross-platform launcher
 ```
