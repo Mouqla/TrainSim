@@ -29,39 +29,35 @@ Two sensors were added at `(7,9)` and `(7,10)`. They let a train reserve or rele
 
 At a station, a train stops for `1000 + 20 × |speed|` milliseconds and then reverses. The implementation accepts speeds in the inclusive range `0–17`.
 
-## Run locally
+## Quick start
 
-Requirements:
+You only need [Java JDK 17 or newer](https://adoptium.net/) to run the project. Download or clone the repository, extract it if needed, and open the project folder.
 
-- JDK 17 or newer
-- GNU Make
+### Windows
 
-Compile the project:
+Double-click `run.bat`.
 
-```bash
-make
-```
+### Linux, macOS or WSL
 
-Start the graphical Java simulator with train speeds 5 and 10:
+Open a terminal in the project folder and run:
 
 ```bash
-TSIM_JAVA=true java -cp bin Main Lab1.map 5 10 20
+./run.sh
 ```
 
-The last argument is the simulator timer delay in milliseconds. A lower value runs the simulation faster.
+The start script compiles the project and opens the graphical train simulator. The default train speeds are 5 and 10. The simulator is included in the repository, so no separate TSim installation is needed.
 
-## Run the headless integration test
+If the script reports that Java is missing, install JDK 17 or newer, restart the terminal and try again.
 
-The headless runner uses the real map, movement engine, sensor delivery, switch commands and collision detector:
+## Test without opening the simulator
+
+Developers can compile and run the headless integration test with one command:
 
 ```bash
-javac -cp bin -sourcepath src:tests -d bin tests/HeadlessLab1Runner.java
-java -cp bin HeadlessLab1Runner 5 10 8000 1
+make test
 ```
 
-The arguments are train speed 1, train speed 2, test duration in milliseconds and simulator timer delay.
-
-The documented test scenarios include `17/17`, `17/0`, `0/17`, `17/10`, `10/17`, `17/5` and `5/17`, each run for 30 seconds without a collision or derailment.
+A successful test reports `fatal=NONE`, two controller threads and eight binary semaphores.
 
 ## Project structure
 
@@ -71,4 +67,6 @@ src/Main.java                 Application entry points
 src/TSim/                     Bundled Java simulator and API
 tests/HeadlessLab1Runner.java Headless integration runner
 Lab1.map                      Railway map and sensor positions
+run.bat                       Start the project on Windows
+run.sh                        Start the project on Linux, macOS or WSL
 ```
