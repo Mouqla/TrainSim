@@ -1,4 +1,4 @@
-# Trainspotting — concurrent train controller
+# TrainSim — concurrent train controller
 
 Trainspotting is a Java controller for two trains sharing a railway network. It uses sensor events, switches and binary semaphores to route both trains without collisions or deadlocks. Each train runs in its own controller thread and keeps its state locally.
 
